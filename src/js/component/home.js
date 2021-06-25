@@ -10,29 +10,23 @@ export function Home() {
 		}
 	}
 	return (
-		<div className="text-center mt-5">
+		<div className="text-center mt-5 container">
 			<h1 className="display-4">To Do List</h1>
 
 			<form
 				onSubmit={evento => {
 					evento.preventDefault();
-					setTodos([...todos, task]);
+					if (task.length > 0) setTodos([...todos, task]);
 					setTask("");
 				}}>
-				<div className="input-group mb-3">
+				<div className="form-group">
 					<input
 						type="text"
 						className="form-control"
-						placeholder="Ingrese su tarea"
+						placeholder="What needs to be done?"
 						onChange={evento => setTask(evento.target.value)}
 						value={task}></input>
-					<div className="input-group-append">
-						<button
-							className="btn btn-outline-secondary"
-							type="button">
-							Agregar
-						</button>
-					</div>
+					<div className="form-group-append"></div>
 				</div>
 			</form>
 			{/* 04 mostrar el contenido del arreglo */}
@@ -58,7 +52,7 @@ export function Home() {
 				})}
 			</ul>
 			<div>
-				<p className="text-muted">
+				<p className="text-muted float-left">
 					{todos.length}
 					{""} item left
 				</p>
